@@ -34,9 +34,9 @@ After order id is returned the mint token feature is enabled and allows endusers
 to mint their POBA token that contains their unique order ID #.
 
 
-## This adapter is for Chainlink node operators providing data fulfillment for pobatag.com product authentication software. ## 
++ This adapter is for Chainlink node operators providing data fulfillment for pobatag.com dapp
 
-## Adapter can be customized for your own e-commerce store! (Requires license key generator plugin w/ rest api) ##
+Adapter can be customized for your own e-commerce store! (Requires license key generator plugin w/ rest api) 
 
 
 
