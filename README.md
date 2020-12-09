@@ -1,62 +1,42 @@
-# ////FourSwords POBAData Chainlink External Adapter
+# ////POBA Data Chainlink External Adapter + WooCommerce RestAPI
 
-
-
-It was built using the Chainlink NodeJS Template available at https://github.com/thodges-gh/CL-EA-NodeJS-Template.
-
-## Setup
-
-### Install and Zip
+### Install
 ```bash
-npm install
+sudo npm install
 ```
-
-```bash
-zip -r pobatag.zip
-```
-
 
 ### Docker
 ```bash
-docker build . -t pobatag
-docker run --name pobatag -p 85:85 -e API_KEY=.env pobatag
+sudo docker build . -t poba
+sudo docker run -d --name pobatag -p 85:85 --env-file=.env poba
 ```
 
 This will run the adapter at http://localhost:85
 
-### Install to AWS Lambda
 
-- In Lambda Functions, create function
-- On the Create function page:
-  - Give the function a name
-  - Use Node.js 8.10 for the runtime
-  - Choose an existing role or create a new one
-  - Click Create Function
-- Under Function code, select "Upload a .zip file" from the Code entry type drop-down
-- Click Upload and select the `open-weather-ea.zip` file
-- Handler should remain index.handler
-- Add the environment variable (repeat for all environment variables):
-  - Key: API_KEY
-  - Value: Your_API_key
-- Save
-
-
-###  Install to GCP
-
-- In Functions, create a new function, choose to ZIP upload
-- Click Browse and select the `open-weather-ea.zip` file
-- Select a Storage Bucket to keep the zip in
-- Function to execute: gcpservice
-- Click More, Add variable (repeat for all environment variables)
-  - NAME: API_KEY
-  - VALUE: Your_API_key
 
 ## Parameters
 The following API endpoints are supported with the related parameters
 
-endpoint: _licenseKey
+## endpoint: _licenseKey
 
-This adapter allows POBA subscribers to authenticate their license keys. 
+This adapter allows POBA subscribers to authenticate their license keys 
+using a WooCommerce License Key generator. Customers are provided a
+unique license key with each purchase. A license key is required to claim
+and mint POBA NFT tokens.  
+
+End user enters license key
+License key is sent to Chainlink node which calls ecommerce store to confirm license key.
+Once license key is confirmed the node returns the associated order ID #
+After order id is returned the mint token feature is enabled and allows endusers
+to mint their POBA token that contains their unique order ID #.
+
+
+## This adapter is for Chainlink node operators providing data fulfillment for pobatag.com product authentication software. ## 
+
+## Adapter can be customized for your own e-commerce store! (Requires license key generator plugin w/ rest api) ##
+
+
 
 
 ```
